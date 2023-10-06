@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Step</title>
+    <link rel="stylesheet" href="../static/css/css.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header_logo">
+            <a href="/">
+                <h1>한걸음 대여소</h1>
+            </a>
+        </div>
+        <div class="header_gnb">
+            <a href='/list'>공지사항</a>
+            <a href='/toylist'>장난감 대여</a>
+        </div>
+    </header>
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+        </div>
+        
+        {% for i in data %}
+        <form action="/edit/{{i[0]}}" method="POST">
+            <div class="board_write_wrap">
+                <div class="board_write">
+                    
+                    <div class="title">
+                        <dl>
+                            <dt>제목</dt>
+                            <dd>{{ i[1] }}</dd>
+                        </dl>
+                    </div>
+                    <div class="info">
+                        <dl>
+                            <dt>글쓴이</dt>
+                            <dd>{{ ID }}</dd>
+                        </dl>
+                        <dl>
+                            <dt>지역</dt>
+                            <dd>{{ i[4] }}</dd>
+                        </dl>
+                    </div>
+                    <div class="cont">
+                        <textarea name="body">{{ i[3] }}</textarea>
+                    </div>
+                    
+                </div>
+                <div class="bt_wrap">
+                    <button type="submit" class="on">수정</button>
+                    <a href="/list">취소</a>
+                </div>
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

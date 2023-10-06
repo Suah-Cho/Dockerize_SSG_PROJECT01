@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Step</title>
+    <link rel="stylesheet" href="../static/css/css.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header_logo">
+            <a href="/">
+                <h1>한걸음 대여소</h1>
+            </a>
+        </div>
+        <div class="header_gnb">
+            <a href='/list'>공지사항</a>
+            <a href='/toylist'>장난감 대여</a>
+        </div>
+    </header>
+    <img src="https://www.yctoy.or.kr:443/theme/yeoncheon/img/index_banner_03.jpg" width="100%">
+    <div class="index_wrap">
+        <div class="index_wrap1">
+            <div class="board_title">
+                <strong><a href="/list">공지사항</a></strong>
+            </div>
+
+            <div class="board_list_wrap">
+                <div class="board_list">
+                    <div class="top">
+                        <div class="num">번호</div>
+                        <div class="title">제목</div>
+                        <div class="writer">글쓴이</div>
+                        <div class="writer">지역</div>
+                        <div class="date">작성일</div>
+                    </div>
+                    {% for i in data_list %}
+                    <div>
+                        <div class="num">{{ i[0] }}</div>
+                        <div class="title" onclick="location.href='/listview/{{i[0]}}'">{{ i[1] }}</a></div>
+                        <div class="writer">{{ i[2] }}</div>
+                        <div class="count">{{ i[3] }}</div>
+                        <div class="date">{{ i[4] }}</div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="index_wrap2">
+                <form action="/logout" method="POST">
+                    <h1>{{ a }}</h1>
+                    <button type="submit">로그아웃</button>
+                </form>
+                <form action="/delete_user" method="POST">
+                    <button type="submit">회원탈퇴</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
