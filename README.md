@@ -22,5 +22,7 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql>
+mysql>create user user identified by 'password';
+mysql> grant all privileges on *.* to user;
+Query OK, 0 rows affected (0.01 sec)
 ```
