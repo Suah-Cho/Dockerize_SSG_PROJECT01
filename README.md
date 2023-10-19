@@ -1,13 +1,11 @@
 # Dockerize_SSG_PROJECT01
 SSG_PROJECT_01 dockerize 레포지터리입니다.
 
-
-
-mysql image
+database volume
 ```shell
-docker container run -d --name mydb -e MYSQL_ROOT_PASSWORD=password mysql:latest
-a81de8fef6b8922c2c6f73aab55c0532d19ecb4ca187d955da9ad6579c8d8332
-docker container exec -it mydb /bin/bash
+docker volume create database
+docker containaer run -d --name mydb -e MYSQL_ROOT_PASSWORD=password -v database:/var/lib/mysql mysql
+docker container -it exec mydb /bin/sh
 bash-4.4# mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -22,7 +20,11 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql>create user user identified by 'password';
+mysql>create user user identified by 'passwd';
 mysql> grant all privileges on *.* to user;
 Query OK, 0 rows affected (0.01 sec)
+
+// 데이터베이스 테이블 작성
+// mydb 컨테이너가 삭제되더라도 볼륨이 로컬에 남아있다.
+
 ```
