@@ -1,11 +1,11 @@
 version: "3.3" 
 services:
   database:
-    container_name: database-container
-    image: mysql:5.7
+    container_name: database
+    image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: firststep
+      # MYSQL_DATABASE: firststep
     ports:
     - 3306
     volumes:
@@ -16,7 +16,7 @@ services:
     container_name: flask-app-container
     depends_on:
       - database
-    image: suahcho/app_img:1.6
+    image: suahcho/app_img:1.7
     expose:
     - 5000
     networks:
