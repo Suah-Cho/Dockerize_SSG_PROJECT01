@@ -2,12 +2,17 @@ from flask import *
 import pymysql
 import utils.utils as utils
 from flask_cors import CORS
+import os
+
 
 # 데이터 베이스 연동
-db = pymysql.connect(host="localhost", 
-                     user="root", password="passwd", 
-                     db="test3",
+
+db = pymysql.connect(host="database-container", 
+                     user="root", password="password", 
+                     db="firststep",
+                     port=3306,
                      charset="utf8")
+
 
 cursor = db.cursor()
 
